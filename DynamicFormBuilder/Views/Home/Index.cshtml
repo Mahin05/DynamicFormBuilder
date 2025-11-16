@@ -1,8 +1,43 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Form List";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h2>Saved Forms</h2>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Form" asp-action="Create">Create</a>
+
+<table id="formTable" class="display table table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Form Title</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#formTable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "@Url.Action("LoadData", "Form")",
+                    "type": "POST"
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "title" },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `<a class="btn btn-sm btn-primary" href="/Form/Preview/${data}">Preview</a>`;
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+}

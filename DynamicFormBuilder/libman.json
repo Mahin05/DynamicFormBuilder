@@ -13,6 +13,10 @@
     {
       "library": "datatables.net@2.3.4",
       "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "bootstrap@5.3.8",
+      "destination": "wwwroot/lib/bootstrap/"
     }
   ]
 }

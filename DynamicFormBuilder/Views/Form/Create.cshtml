@@ -6,6 +6,28 @@
 
 
 <form method="post" asp-action="Create" id="formBuilder">
+    <div class="mb-3">
+        <label for="formTitle" class="form-label">Form Title</label>
+        <input type="text" name="title" id="formTitle" required>
+    </div>    
+    <div id="fieldsContainer" class="mb-3">
+        <!-- dynamic fields will be appended here -->
+    </div>
+    <button type="button" id="addMoreBtn">Add More</button>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-danger" asp-action="Index">Cancel</a>
+</form>
+
+
+@* <form method="post" asp-action="Create" id="formBuilder">
     <div>
         <label>Form Title</label>
         <input type="text" name="title" id="formTitle" required />
@@ -27,7 +49,7 @@
         <button type="submit">Submit</button>
         <a asp-action="Index">Cancel</a>
     </div>
-</form>
+</form> *@
 
 
 <script src="/js/form-builder.js"></script>

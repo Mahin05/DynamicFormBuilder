@@ -15,10 +15,9 @@ namespace DynamicFormBuilder.Controllers
             _db = db;
         }
         // GET: /Form
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var forms = await _db.Forms.AsNoTracking().ToListAsync();
-            return View(forms);
+            return View();
         }
         // GET: /Form/Create
         public IActionResult Create()
@@ -103,7 +102,7 @@ namespace DynamicFormBuilder.Controllers
 
                 // Pagination
                 var result = query
-                    .OrderByDescending(f => f.Id)
+                    .OrderBy(f => f.Id)
                     .Skip(skip)
                     .Take(pageSize)
                     .Select(f => new
