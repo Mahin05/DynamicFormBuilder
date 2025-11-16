@@ -76,6 +76,60 @@ namespace DynamicFormBuilder.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
+        [HttpPost]
+        public IActionResult LoadData()
+        {
+            try
+            {
+                var draw = Request.Form["draw"].FirstOrDefault();
+                var start = Request.Form["start"].FirstOrDefault();
+                var length = Request.Form["length"].FirstOrDefault();
+                var searchValue = Request.Form["search[value]"].FirstOrDefault();
+
+                int pageSize = length != null ? Convert.ToInt32(length) : 10;
+                int skip = start != null ? Convert.ToInt32(start) : 0;
+
+                var query = _db.Forms.AsQueryable();
+
+                // SEARCH
+                if (!string.IsNullOrWhiteSpace(searchValue))
+                {
+                    query = query.Where(f => f.Title.Contains(searchValue));
+                }
+
+                int recordsTotal = query.Count();
+
+                // Pagination
+                var result = query
+                    .OrderByDescending(f => f.Id)
+                    .Skip(skip)
+                    .Take(pageSize)
+                    .Select(f => new
+                    {
+                        id = f.Id,
+                        title = f.Title
+                    })
+                    .ToList();
+
+                return Json(new
+                {
+                    draw = draw,
+                    recordsFiltered = recordsTotal,
+                    recordsTotal = recordsTotal,
+                    data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message });
+            }
+        }
+
+
+
+
         // GET: /Form/Preview/5
         public async Task<IActionResult> Preview(long id)
         {

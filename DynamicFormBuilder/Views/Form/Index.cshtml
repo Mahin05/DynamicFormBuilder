@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Form List";
+}
+
+<h2>Saved Forms</h2>
+
+<table id="formTable" class="display table table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Form Title</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+</table>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#formTable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "@Url.Action("LoadData", "Form")",
+                    "type": "POST"
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "title" },
+                    {
+                        "data": "id",
+                        "render": function (data) {
+                            return `<a class="btn btn-sm btn-primary" href="/Form/Preview/${data}">Preview</a>`;
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+}
