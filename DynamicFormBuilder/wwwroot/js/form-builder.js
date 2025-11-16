@@ -21,7 +21,7 @@
         labelInput.name = 'fieldLabel[]';
         labelInput.placeholder = 'Label (e.g., Select Country)';
         labelInput.required = true;
-        labelInput.className = 'label-input';
+        labelInput.className = 'form-control mb-2';
 
         // Required checkbox
         const requiredCheckbox = document.createElement('input');
@@ -45,7 +45,7 @@
         // Dropdown select
         const select = document.createElement('select');
         select.name = 'fieldOption[]';
-        select.className = 'option-select';
+        select.className = 'form-select mt-2';
 
         FIXED_OPTIONS.forEach(opt => {
             const option = document.createElement('option');
@@ -58,7 +58,7 @@
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.textContent = 'Remove';
-        removeBtn.className = 'remove-btn';
+        removeBtn.className = 'my-2 btn btn-danger';
         removeBtn.addEventListener('click', () => {
             wrapper.remove();
         });

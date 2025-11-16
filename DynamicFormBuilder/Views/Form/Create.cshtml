@@ -8,14 +8,16 @@
 <form method="post" asp-action="Create" id="formBuilder">
     <div class="mb-3">
         <label for="formTitle" class="form-label">Form Title</label>
-        <input type="text" name="title" id="formTitle" required>
+        <input class="form-control" type="text" name="title" id="formTitle" required>
     </div>    
     <div id="fieldsContainer" class="mb-3">
         <!-- dynamic fields will be appended here -->
     </div>
-    <button type="button" id="addMoreBtn">Add More</button>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a class="btn btn-danger" asp-action="Index">Cancel</a>
+    <button type="button" class="btn btn-info text-white" id="addMoreBtn">Add More</button>
+    <div class="mt-5">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-danger" asp-action="Index">Cancel</a>
+    </div>
 </form>
 
 
