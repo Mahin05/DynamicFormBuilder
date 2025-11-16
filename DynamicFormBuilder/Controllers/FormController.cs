@@ -131,11 +131,17 @@ namespace DynamicFormBuilder.Controllers
 
 
         // GET: /Form/Preview/5
-        public async Task<IActionResult> Preview(long id)
+        public IActionResult Preview(long id)
         {
-            var form = await _db.Forms.Include(f => f.Fields.OrderBy(ff => ff.Position)).FirstOrDefaultAsync(f => f.Id == id);
-            if (form == null) return NotFound();
+            var form = _db.Forms
+                               .Include(f => f.Fields)
+                               .FirstOrDefault(f => f.Id == id);
+
+            if (form == null)
+                return NotFound();
+
             return View(form);
         }
+
     }
 }
