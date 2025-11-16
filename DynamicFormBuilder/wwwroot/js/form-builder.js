@@ -31,12 +31,12 @@
         const requiredWrap = document.createElement('label');
         requiredWrap.appendChild(requiredCheckbox);
         requiredWrap.appendChild(document.createTextNode(' Required'));
+        requiredWrap.className = 'fw-bold';
 
-        // Hidden required input (to ensure true/false always posted)
         const hiddenRequired = document.createElement('input');
         hiddenRequired.type = 'hidden';
         hiddenRequired.name = 'fieldRequired[]';
-        hiddenRequired.value = 'false';  // default
+        hiddenRequired.value = 'false'; 
 
         requiredCheckbox.addEventListener('change', () => {
             hiddenRequired.value = requiredCheckbox.checked ? 'true' : 'false';
@@ -58,7 +58,7 @@
         const removeBtn = document.createElement('button');
         removeBtn.type = 'button';
         removeBtn.textContent = 'Remove';
-        removeBtn.className = 'my-2 btn btn-danger';
+        removeBtn.className = 'my-2 btn btn-danger fw-bold';
         removeBtn.addEventListener('click', () => {
             wrapper.remove();
         });

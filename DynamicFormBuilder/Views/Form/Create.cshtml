@@ -7,43 +7,17 @@
 
 <form method="post" asp-action="Create" id="formBuilder">
     <div class="mb-3">
-        <label for="formTitle" class="form-label">Form Title</label>
+        <label for="formTitle" class="form-label fw-bold">Form Title</label>
         <input class="form-control" type="text" name="title" id="formTitle" required>
     </div>    
     <div id="fieldsContainer" class="mb-3">
         <!-- dynamic fields will be appended here -->
     </div>
-    <button type="button" class="btn btn-info text-white" id="addMoreBtn">Add More</button>
+    <button type="button" class="btn btn-info text-white fw-bold" id="addMoreBtn">Add More</button>
     <div class="mt-5">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-danger" asp-action="Index">Cancel</a>
+        <button type="submit" class="btn btn-primary fw-bold">Submit</button>
+        <a class="btn btn-danger fw-bold" asp-action="Index">Cancel</a>
     </div>
 </form>
-
-
-@* <form method="post" asp-action="Create" id="formBuilder">
-    <div>
-        <label>Form Title</label>
-        <input type="text" name="title" id="formTitle" required />
-    </div>
-
-
-    <hr />
-
-
-    <div id="fieldsContainer">
-        <!-- dynamic fields will be appended here -->
-    </div>
-
-
-    <button type="button" id="addMoreBtn">Add More</button>
-
-
-    <div style="margin-top:20px;">
-        <button type="submit">Submit</button>
-        <a asp-action="Index">Cancel</a>
-    </div>
-</form> *@
-
 
 <script src="/js/form-builder.js"></script>

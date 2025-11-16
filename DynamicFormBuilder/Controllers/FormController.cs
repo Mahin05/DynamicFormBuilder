@@ -31,9 +31,6 @@ namespace DynamicFormBuilder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([FromForm] string title)
         {
-            // The fields will come as arrays: fieldLabel[], fieldRequired[], fieldOption[]
-
-
             var labels = Request.Form["fieldLabel[]"].ToArray();
             var requireds = Request.Form["fieldRequired[]"].ToArray();
             var options = Request.Form["fieldOption[]"].ToArray();
@@ -56,7 +53,7 @@ namespace DynamicFormBuilder.Controllers
                 var opt = i < options.Length ? options[i] : null;
 
 
-                if (string.IsNullOrWhiteSpace(label)) continue; // skip invalid
+                if (string.IsNullOrWhiteSpace(label)) continue;
 
 
                 form.Fields.Add(new FormField
