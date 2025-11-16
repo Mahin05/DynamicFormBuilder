@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DynamicFormBuilder.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DynamicFormBuilder.Data
 {
@@ -7,6 +8,7 @@ namespace DynamicFormBuilder.Data
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options): base(options)
         {
         }
-
+        public DbSet<Form> Forms { get; set; }
+        public DbSet<FormField> FormFields { get; set; }
     }
 }
